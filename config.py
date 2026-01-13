@@ -1,0 +1,17 @@
+import numpy as np
+
+# Audio Settings
+SAMPLE_RATE = 24000
+WINDOW_SECONDS = 0.05
+WINDOW_SAMPLES = int(SAMPLE_RATE * WINDOW_SECONDS)
+
+# ESN / ESpace Settings
+RANDOM_SEED = 42
+RES_SIZE = 64
+SPARSITY = 0.1
+SPECTRAL_RADIUS = 0.99
+LEAK_MIN = 1e-4
+LEAK_MAX = 1.0
+
+# Visualization
+RESULTS_DIR = "results"

@@ -1,0 +1,24 @@
+[build-system]
+requires = ["maturin>=1.10,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "cspace_expereiments"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+]
+dynamic = ["version"]
+dependencies = [
+    "datasets>=3.1.0",
+    "matplotlib>=3.7.5",
+    "numpy>=1.24.4",
+    "torch>=2.5.1",
+    "torchaudio>=2.5.1",
+    "torchcodec>=0.9.1",
+]
+
+[tool.uv]
+cache-keys = [{file = "pyproject.toml"}, {file = "rust/Cargo.toml"}, {file = "**/*.rs"}]
