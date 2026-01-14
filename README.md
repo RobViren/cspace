@@ -6,7 +6,7 @@
 </p>
 
 ## Why?
-I find GANs to be irksome and too black box in nature. I wanted to explore audio and AI and decided I wanted to try and make a different pipeline not requiring GANs for similarity loss. I explore mass spring damper systems and the human cochlear structure. I felt if biology uses the structure to project air waves perhaps an analog could be used to do something similar.
+I find GANs to be irksome and too black box in nature. I wanted to explore audio and AI and decided I wanted to try and make a different pipeline not requiring GANs for similarity loss. I explored mass spring damper systems and the human cochlear structure. I felt if biology uses the structure to project air waves perhaps an analog could be used to do something similar.
 
 **CSpace** (Cochlear Space) is an experimental framework that treats audio analysis not as a pattern recognition task (Perception), but as a measurement task (Control Theory).
 
@@ -93,7 +93,7 @@ uv run cspace_spectrogram.py ./audio/sample_1.wav 48000
 ```
 
 <p align="center">
-  <img src="image/cspace_viz.png" width="800">
+  <img src="images/cspace_viz.png" width="800">
 </p>
 
 ### 2. Split-State Search
