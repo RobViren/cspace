@@ -2,7 +2,7 @@
 ### Solving Audio Phase Locking with Control Theory (No GANs Required)
 
 <p align="center">
-  <img src="images/loss_topology_comparison.png" width="800">
+  <img src="images/loss_topology_comparison.png" width="500">
 </p>
 
 ## Why?
@@ -60,7 +60,7 @@ uv run esn_spectrogram.py ./audio/sample_1.wav 48000
 *   **What to look for:** Horizontal bands corresponding to frequencies, but with phase-coherence visible in the activation patterns.
 
 <p align="center">
-  <img src="images/spec_sample_72000.png" width="800">
+  <img src="images/spec_sample_72000.png" width="500">
 </p>
 
 ### 2. Similarity Search (The Ruler Test)
@@ -72,7 +72,7 @@ uv run esn_search.py ./audio/sample_1.wav ./audio/sample_1.wav 48000
 *   **Observation:** A sharp "V" shape in the distance plot indicates a precise basin of attraction for phase alignment.
 
 <p align="center">
-  <img src="images/search_q72000_match72000.png" width="800">
+  <img src="images/search_q72000_match72000.png" width="500">
 </p>
 
 ### 3. Robustness Suite
@@ -93,7 +93,7 @@ uv run cspace_spectrogram.py ./audio/sample_1.wav 48000
 ```
 
 <p align="center">
-  <img src="images/cspace_viz.png" width="800">
+  <img src="images/cspace_viz.png" width="500">
 </p>
 
 ### 2. Split-State Search
@@ -102,6 +102,10 @@ Demonstrates how the Forward and Backward states "triangulate" transient events.
 uv run cspace_search.py ./audio/sample_1.wav ./audio/sample_1.wav 48000
 ```
 *   **Observation:** The Forward loss drops *after* the event; the Backward loss drops *before* the event. The sum creates a perfect, steep gradient.
+
+<p align="center">
+  <img src="images/cspace_search_q48000.png" width="500">
+</p>
 
 ### 3. Gradient Topology (The Scientific Proof)
 This compares the Loss Landscape of **Mel-Spectrograms** vs. **Multi-Scale Spectral** vs. **CSpace**.
@@ -123,7 +127,7 @@ uv run cspace_quantize.py ./audio/sample_1.wav 48000
 ```
 
 <p align="center">
-  <img src="images/quantization_topology.png" width="800">
+  <img src="images/quantization_topology.png" width="500">
 </p>
 
 *   **Result:** The Int8 loss landscape overlaps the Float32 landscape almost perfectly. This suggests CSpace embeddings are highly compressible while retaining semantic and phase fidelity.
