@@ -1,12 +1,21 @@
 # CSpace: Physically Grounded Audio Embeddings
 ### Solving Audio Phase Locking with Control Theory (No GANs Required)
 
+<p align="center">
+  <img src="images/loss_topology_comparison.png" width="800">
+</p>
+
+## Why?
+I find GANs to be irksome and too black box in nature. I wanted to explore audio and AI and decided I wanted to try and make a different pipeline not requiring GANs for similarity loss. I explore mass spring damper systems and the human cochlear structure. I felt if biology uses the structure to project air waves perhaps an analog could be used to do something similar.
+
 **CSpace** (Cochlear Space) is an experimental framework that treats audio analysis not as a pattern recognition task (Perception), but as a measurement task (Control Theory).
 
 By projecting audio into high-dimensional states of damped harmonic oscillators (via **Echo State Networks** and **Structured State Spaces**), we create a "Neural Ruler." This fixed coordinate system allows for:
 1.  **Phase-Locked Similarity Search:** Precise alignment of waveforms even with offsets.
 2.  **Holographic Loss:** A fully differentiable loss function that forces neural networks to learn phase without Adversarial (GAN) training.
 3.  **Robust Embeddings:** Representations that survive quantization and noise.
+
+## Why
 
 ---
 
@@ -50,6 +59,10 @@ uv run esn_spectrogram.py ./audio/sample_1.wav 48000
 *   **Output:** `results/spec_sample_48000.png`
 *   **What to look for:** Horizontal bands corresponding to frequencies, but with phase-coherence visible in the activation patterns.
 
+<p align="center">
+  <img src="images/spec_sample_72000.png" width="800">
+</p>
+
 ### 2. Similarity Search (The Ruler Test)
 Takes a vector at sample `48000` and searches the rest of the file (or a target file) for the closest match using Euclidean distance.
 ```bash
@@ -57,6 +70,10 @@ uv run esn_search.py ./audio/sample_1.wav ./audio/sample_1.wav 48000
 ```
 *   **Output:** `results/search_q48000_match_XXXX.png`
 *   **Observation:** A sharp "V" shape in the distance plot indicates a precise basin of attraction for phase alignment.
+
+<p align="center">
+  <img src="images/search_q72000_match72000.png" width="800">
+</p>
 
 ### 3. Robustness Suite
 Proves that the "Ruler" property holds across different network sizes, random seeds, and sparsity levels.
@@ -74,6 +91,10 @@ Visualizes the Forward (Past Context) and Backward (Future Context) magnitude st
 ```bash
 uv run cspace_spectrogram.py ./audio/sample_1.wav 48000
 ```
+
+<p align="center">
+  <img src="image/cspace_viz.png" width="800">
+</p>
 
 ### 2. Split-State Search
 Demonstrates how the Forward and Backward states "triangulate" transient events.
@@ -100,6 +121,11 @@ Tests if the "Gradient Basin" survives being crushed into 8-bit integers using p
 ```bash
 uv run cspace_quantize.py ./audio/sample_1.wav 48000
 ```
+
+<p align="center">
+  <img src="images/quantization_topology.png" width="800">
+</p>
+
 *   **Result:** The Int8 loss landscape overlaps the Float32 landscape almost perfectly. This suggests CSpace embeddings are highly compressible while retaining semantic and phase fidelity.
 
 ### 2. Numerical Drift Test
