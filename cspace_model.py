@@ -23,8 +23,7 @@ class CSpace(nn.Module):
         decays = np.linspace(decay_factor, high_freq_decay, res_size)
         
         # --- 3. Create Complex Kernels ---
-        # Length: 1.0s to accommodate the slower decays (0.999 needs time to ring out)
-        k_len = int(1.0 * sr)
+        k_len = int(3.0 * sr)
         t = np.arange(k_len)
         
         # lambda = |r| * e^(i * theta)
